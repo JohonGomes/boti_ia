@@ -1,0 +1,8 @@
+.navbar{
+    border-radius: 20px !important;
+    background-color: var(--verde-nav) !important;
+}
+
+.navbar a{
+    color: var(--azul-escuro);
+}
