@@ -2,3 +2,8 @@ body {
     padding: 15px;
     margin: 0px;
 }
+
+.navbar{
+    border-radius: 20px !important;
+    background-color: aquamarine !important;
+}
