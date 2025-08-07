@@ -6,3 +6,10 @@
 .navbar a{
     color: var(--azul-escuro);
 }
+
+
+.footer{
+    max-width: 1000px;
+    border-radius: 20px !important;
+    background-color: var(--verde-nav) !important;
+}

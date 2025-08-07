@@ -1,3 +1,7 @@
+.logo{
+    width:250px !important;
+}
+
 .input-group{
     max-width: 1000px !important;
 }
@@ -7,6 +11,13 @@
 }
 
 .botao{
+    background-color: var(--azul)!important;
+    color: #fff !important;
     border-radius: 50px !important;
     padding: 10px 40px !important;
 }
+
+.botao:hover{
+    background-color: var(--laranja) !important;
+}
+
