@@ -1,0 +1,12 @@
+.input-group{
+    max-width: 1000px !important;
+}
+
+.border-btn {
+    border-radius: 20px !important;
+}
+
+.botao{
+    border-radius: 50px !important;
+    padding: 10px 40px !important;
+}
