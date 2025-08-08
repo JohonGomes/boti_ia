@@ -45,14 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         responseArea.innerHTML = 
         `
-        <div class="spinner-grow text-success" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-warning" role="status">
-            <span class="visually-hidden">Loading...</span>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+            <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
 
         ` 
