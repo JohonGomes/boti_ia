@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
         <script src="https://unpkg.com/@google/generative-ai"></script>
 </head>
 
@@ -43,30 +42,30 @@
         </nav>
     </header>
 
-    <main>
+    <main class="bg">
         <figure class="container-fluid d-flex justify-content-center align-items-center">
             <img class="img-fluid logo p-5" src="./assets/gb-logo.png" alt="Logo O Boticário">
         </figure>
 
         <div class="container-fluid d-flex justify-content-center align-items-center p-5 area">
-            <p id="responseArea">Aguardando sua pergunta...</p>
+            <p id="responseArea">Bem-vindos ao Boti IA!</p> <br>
         </div>
 
         <div class="container-fluid d-flex justify-content-center align-items-center p-5">
             <div class="input-group">
-                <span class="input-group-text border-btn">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle border-btn" type="button"
+                <span class="input-group-text border-btn bg-textarea">
+                    <div class="dropdown ">
+                        <button class="btn dropdown-toggle border-btn btn-ia text-white fw-bold" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
                             Modelo da IA
                         </button>
                         <ul class="dropdown-menu" id="modelDropdown">
-                            <li><a class="dropdown-item" href="#" data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro</a></li>
-                            <li><a class="dropdown-item" href="#" data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li>
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#" data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro</a></li>
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#" data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li>
                         </ul>
                     </div>
                 </span>
-                <textarea class="form-control border-btn" aria-label="With textarea" id="promptTextarea"></textarea>
+                <textarea class="form-control border-btn bg-textarea" aria-label="With textarea" id="promptTextarea"></textarea>
             </div>
         </div>
         <div class="container-fluid d-flex justify-content-center align-items-center">
@@ -77,7 +76,7 @@
     </main>
 
     <footer class="container-fluid d-flex justify-content-center footer p-2">
-        <p class="fw-bold"> Desenvolvido pelo grupo 3.9 - Programa Desenvolve - O Boticário </p>
+        <p class="fw-bold "> Desenvolvido pelo grupo 3.9 - Programa Desenvolve - O Boticário </p>
     </footer>
 
 

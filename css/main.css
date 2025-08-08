@@ -1,8 +1,8 @@
-.logo{
-    width:250px !important;
+.logo {
+    width: 250px !important;
 }
 
-.input-group{
+.input-group {
     max-width: 1000px !important;
 }
 
@@ -10,14 +10,36 @@
     border-radius: 20px !important;
 }
 
-.botao{
-    background-color: var(--azul)!important;
+.botao {
+    background-color: var(--azul) !important;
     color: #fff !important;
     border-radius: 50px !important;
     padding: 10px 40px !important;
 }
 
-.botao:hover{
+.botao:hover {
     background-color: var(--laranja) !important;
 }
 
+.bg {
+    border-radius: 30px !important;
+    background-color: var(--verde-bg) !important;
+    margin: 0 30px 30px 30px !important;
+}
+
+.bg-textarea {
+    background-color: var(--azul-input) !important;
+}
+
+.btn-ia {
+    background-color: var(--azul) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--azul-input) !important;
+    border: none !important;
+    top: 10px !important;
+    left: -10px !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
+}

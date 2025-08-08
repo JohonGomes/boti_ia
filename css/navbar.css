@@ -13,3 +13,7 @@
     border-radius: 20px !important;
     background-color: var(--verde-nav) !important;
 }
+
+.footer p{
+    color: var(--azul-escuro);
+}

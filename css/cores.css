@@ -1,10 +1,14 @@
 :root {
     --verde-primario: #8dc73f;
-    --verde-nav: #65b75a62;
+    --verde-bg: #8cc73f2f;
+    --verde-nav: #65b75a00;
     --azul: #3c9cd8;
+    --azul-input: #3c9cd82a;
     --azul-escuro:#1073aa;
     --laranja: #f48221;
+    --laranja-input: #216bf449;
     --laranja-escuro:#f15927;
-    --amarelo-limão: #c9d821;
+    --amarelo-bg: #c9d82128;
+    --amarelo-limao: #c9d821;
 }
 
