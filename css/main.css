@@ -6,9 +6,9 @@
     max-width: 1000px !important;
 }
 
-.border-btn {
+/* .border-btn {
     border-radius: 20px !important;
-}
+} */
 
 .botao {
     background-color: var(--azul) !important;
@@ -18,6 +18,10 @@
 }
 
 .botao:hover {
+    background-color: var(--laranja) !important;
+}
+
+.btn:hover {
     background-color: var(--laranja) !important;
 }
 
@@ -39,7 +43,7 @@
     background-color: var(--azul-input) !important;
     border: none !important;
     top: 10px !important;
-    left: -10px !important;
+    left: -13px !important;
     padding: 10px !important;
-    border-radius: 20px !important;
+    border-radius: 5px !important;
 }

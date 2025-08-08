@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://unpkg.com/@google/generative-ai"></script>
+    <script src="https://unpkg.com/@google/generative-ai"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text" id="addon-wrapping">API Key</span>
-                            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                            <input type="password" class="form-control" placeholder="" aria-label="api-key"
                                 aria-describedby="addon-wrapping" id="apiKeyInput">
                         </div>
                     </div>
@@ -53,19 +53,22 @@
 
         <div class="container-fluid d-flex justify-content-center align-items-center p-5">
             <div class="input-group">
-                <span class="input-group-text border-btn bg-textarea">
+                <span class="input-group-text bg-textarea">
                     <div class="dropdown ">
-                        <button class="btn dropdown-toggle border-btn btn-ia text-white fw-bold" type="button"
+                        <button class="btn dropdown-toggle btn-ia text-white fw-bold" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
                             Modelo IA
                         </button>
-                        <ul class="dropdown-menu required" id="modelDropdown">
-                            <li><a class="dropdown-item fw-bold text-secondary" href="#" data-model="gemini-2.5-pro-latest">Gemini 2.5 Pro</a></li>
-                            <li><a class="dropdown-item fw-bold text-secondary" href="#" data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li> <!-- Funcionando-->
+                        <ul class="dropdown-menu" id="modelDropdown">
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                                    data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li> <!-- Funcionando-->
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                                    data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro </a></li>
                         </ul>
                     </div>
                 </span>
-                <textarea class="form-control border-btn bg-textarea" aria-label="With textarea" id="promptTextarea"></textarea>
+                <textarea class="form-control bg-textarea" aria-label="With textarea"
+                    id="promptTextarea"></textarea>
             </div>
         </div>
         <div class="container-fluid d-flex justify-content-center align-items-center">
