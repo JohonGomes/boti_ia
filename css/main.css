@@ -47,3 +47,20 @@
     padding: 10px !important;
     border-radius: 5px !important;
 }
+
+#responseArea {
+    max-width: 1000px;
+}
+
+#responseArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    /* ou 'center', 'left', 'right' */
+}
+
+#responseArea p {
+    width: 100%;
+    /* Ajuste a largura do parágrafo para um alinhamento melhor */
+}

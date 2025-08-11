@@ -21,17 +21,37 @@ document.addEventListener("DOMContentLoaded", function () {
         const prompt = promptTextarea.value;
 
         if (!apiKey) {
-            responseArea.textContent = "Por favor, insira sua chave da API.";
+            responseArea.innerHTML =
+                `
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
+                    <span>Por favor, insira sua chave da API.</span>
+                </div>
+            `;
             return;
         }
 
         if (!currentModel) {
-            responseArea.textContent = "Por favor, selecione um modelo de IA.";
+            responseArea.innerHTML =
+                `
+            <div class="d-flex align-items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
+                <span>Por favor, escolha o modelo de IA.</span>
+            </div>
+
+            `;
             return;
         }
 
         if (!prompt) {
-            responseArea.textContent = "Por favor, digite sua pergunta.";
+            responseArea.innerHTML =
+                `
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
+                        <span>Por favor, digite sua pergunta.</span>
+                    </div>
+                `;
+            ;
             return;
         }
 
@@ -70,17 +90,19 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (!response.ok) {
-                // Se a resposta da API não for ok, lê o erro e lança uma exceção
                 const errorData = await response.json();
                 throw new Error(errorData.error.message || "Erro na chamada da API.");
             }
 
             const data = await response.json();
-
-            // Extrai o texto da resposta
             const text = data.candidates[0].content.parts[0].text;
 
-            responseArea.textContent = text;
+            // Formatação do texto: substitui quebras de linha por parágrafos
+            const formattedText = text.split('\n').map(p => `<p>${p}</p>`).join('');
+
+            // Insere o HTML formatado na área de resposta
+            responseArea.innerHTML = formattedText;
+
         } catch (error) {
             console.error("Erro ao chamar a API do Gemini:", error);
             responseArea.textContent = `Ocorreu um erro ao processar sua solicitação: ${error.message}. Verifique sua chave da API ou tente novamente mais tarde.`;
