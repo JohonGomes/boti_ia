@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
-
 document.addEventListener("DOMContentLoaded", function () {
     const apiKeyInput = document.getElementById("apiKeyInput");
     const modelDropdownButton = document.getElementById("modelDropdownButton");
@@ -8,15 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const promptTextarea = document.getElementById("promptTextarea");
     const submitButton = document.getElementById("submitButton");
 
-    // let currentModel = "gemini-1.5-flash-latest";
-    let currentModel = null; // Modelo padrão
+    let currentModel = null;
 
-    // Adiciona o listener para os modelos no dropdown
     modelDropdown.addEventListener("click", function (event) {
         const selectedModel = event.target.getAttribute("data-model");
         if (selectedModel) {
             currentModel = selectedModel;
-            modelDropdownButton.textContent = event.target.textContent; // Atualiza o texto do botão
+            modelDropdownButton.textContent = event.target.textContent;
         }
     });
 
@@ -24,57 +20,70 @@ document.addEventListener("DOMContentLoaded", function () {
         const apiKey = apiKeyInput.value;
         const prompt = promptTextarea.value;
 
-
-        // Validação básica para a chave da API e o prompt
         if (!apiKey) {
             responseArea.textContent = "Por favor, insira sua chave da API.";
             return;
         }
 
-        // Nova validação para o modelo
         if (!currentModel) {
             responseArea.textContent = "Por favor, selecione um modelo de IA.";
             return;
         }
 
-        // Validação da pergunta
         if (!prompt) {
             responseArea.textContent = "Por favor, digite sua pergunta.";
             return;
         }
 
-        responseArea.innerHTML = 
-        `
-        <div class="d-flex justify-content-center align-items-center gap-2">
-            <div class="spinner-grow text-success" role="status">
-                <span class="visually-hidden">Loading...</span>
+        responseArea.innerHTML =
+            `
+            <div class="d-flex justify-content-center align-items-center gap-2">
+                <div class="spinner-grow text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
-            <div class="spinner-grow text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-warning" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-
-        ` 
-        ;
+            `;
 
         promptTextarea.value = "";
 
         try {
-            // Inicializa a API com a chave fornecida
-            const genAI = new GoogleGenerativeAI(apiKey);
-            const model = genAI.getGenerativeModel({ model: currentModel });
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:generateContent?key=${apiKey}`;
 
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const text = response.text();
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "contents": [{
+                        "parts": [{
+                            "text": prompt
+                        }]
+                    }]
+                }),
+            });
+
+            if (!response.ok) {
+                // Se a resposta da API não for ok, lê o erro e lança uma exceção
+                const errorData = await response.json();
+                throw new Error(errorData.error.message || "Erro na chamada da API.");
+            }
+
+            const data = await response.json();
+
+            // Extrai o texto da resposta
+            const text = data.candidates[0].content.parts[0].text;
 
             responseArea.textContent = text;
         } catch (error) {
             console.error("Erro ao chamar a API do Gemini:", error);
-            responseArea.textContent = "Ocorreu um erro ao processar sua solicitação. Verifique sua chave da API ou tente novamente mais tarde.";
+            responseArea.textContent = `Ocorreu um erro ao processar sua solicitação: ${error.message}. Verifique sua chave da API ou tente novamente mais tarde.`;
         }
     });
 });
