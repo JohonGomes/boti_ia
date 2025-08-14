@@ -193,8 +193,8 @@
     }
 
     body {
-        padding: 00px;
-        margin: -15px;
+        padding: 0px;
+        margin: -18px;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -232,3 +232,4 @@
         color: white !important;
     }
 }
+
