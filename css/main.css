@@ -167,7 +167,7 @@
 
 /* Estilo para a bolha do usuário (alinhada à direita) */
 .user-bubble {
-    background-color: #007bff;
+    background-color: #007bff6e;
     /* Azul para as mensagens do usuário */
     color: white;
     align-self: flex-end;
@@ -178,7 +178,7 @@
 
 /* Estilo para a bolha da IA (alinhada à esquerda) */
 .ia-bubble {
-    background-color: #ffc108;
+    background-color: #ffc10879;
     /* Cinzento claro para as mensagens da IA */
     color: white;
     align-self: flex-start;
@@ -251,6 +251,8 @@
 
 #promptTextarea::placeholder {
     color: rgba(255, 255, 255, 0.267);
+    display: flex;
+    text-align: center;
 }
 
 #apiKeyInput::placeholder {
