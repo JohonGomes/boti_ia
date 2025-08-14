@@ -1,5 +1,5 @@
 .logo {
-    width: 250px !important;
+    width: 150px !important;
 }
 
 .input-group {
@@ -154,7 +154,7 @@
 
 /* Estilo base para todas as bolhas de chat */
 .chat-bubble {
-    margin-bottom: 1rem;
+    margin-bottom: 0px;
     padding: 0.8rem 1.2rem;
     /* Aumentado de 80% para 90% para dar mais largura às bolhas de chat */
     max-width: 90%;
@@ -178,7 +178,7 @@
 
 /* Estilo para a bolha da IA (alinhada à esquerda) */
 .ia-bubble {
-    background-color: var(--laranja);
+    background-color: #ffc108;
     /* Cinzento claro para as mensagens da IA */
     color: white;
     align-self: flex-start;
@@ -215,21 +215,44 @@
         justify-content: center;
     }
 
-    .formcontrol {
-        margin-top: 15px !important;
-        place-content: Digite aqui a pergunta;
-    }
-
     .dropdown-menu {
         background-color: var(--azul) !important;
-        top: 16px !important;
-        left: -67px !important;
+        top: 15px !important;
+        left: -68px !important;
         width: 258px;
         color: white !important;
     }
 
     .dropdown-menu a {
         color: white !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    small{
+        display: flex;
+        text-align: center;
     }
 }
 
+.size-bar{
+    max-width: 1090px !important;
+}
+
+.dropdown-menu a{
+    color: white !important;
+    background-color: transparent !important;
+}
+
+
+.dropdown-menu a:hover{
+    color: var(--azul) !important;
+}
+
+#promptTextarea::placeholder {
+    color: rgba(255, 255, 255, 0.267);
+}
+
+#apiKeyInput::placeholder {
+    color: rgba(255, 255, 255, 0.596);
+}

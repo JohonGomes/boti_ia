@@ -1,0 +1,13 @@
+.footer i{
+    color: white;
+}
+
+.footer i:hover {
+    color: var(--laranja); /* Exemplo de cor azul ao passar o rato */
+    font-size: 20px;
+    transition: 0.5;
+}
+
+.footer p{
+    margin-top: 5px;
+}

@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: linear-gradient(to top, #3ac446e3, #ffffff);
 }
 
 main {

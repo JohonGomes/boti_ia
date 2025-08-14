@@ -28,9 +28,9 @@
                 <div class="row mx-3">
                     <div class="col-12">
                         <div class="input-group flex-nowrap border-0">
-                            <span class="input-group-text border-0 bg-textarea" id="addon-wrapping">API Key:</span>
-                            <input type="password" class="form-control border-0 bg-textarea" placeholder="" aria-label="api-key"
-                                aria-describedby="addon-wrapping" id="apiKeyInput">
+                            <span class="input-group-text border-0 bg-textarea fw-bold" id="addon-wrapping">API Key:</span>
+                            <input type="password" class="form-control border-0 bg-textarea" placeholder="Coloque aqui a API key"
+                                aria-label="api-key" aria-describedby="addon-wrapping" id="apiKeyInput">
                         </div>
                     </div>
                 </div>
@@ -39,46 +39,55 @@
     </header>
 
     <main class="bg">
-        <figure class="container-fluid d-flex justify-content-center align-items-center">
+        <figure class="container-fluid d-flex justify-content-center align-items-center pt-5">
             <img class="img-fluid logo" src="./assets/gb-logo.png" alt="Logo O Boticário">
         </figure>
-        
+
 
         <div class="container-fluid d-flex justify-content-center align-items-center area" id="responseArea">
         </div>
 
-        <div class="container d-flex justify-content-center align-items-center p-5">
-    <!-- Adicionado flex-column para o layout de telemóvel e flex-md-row para ecrãs maiores -->
-    <div class="d-flex flex-column flex-md-row w-100">
-        <!-- O span e o textarea são agora irmãos diretos da div flexbox -->
-        <span class="bg-textarea input-group-text rounded mb-2 mb-md-0">
-            <div class="dropdown">
-                <button class="btn dropdown-toggle btn-ia text-white fw-bold" type="button"
-                    data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
-                    Modelo IA
-                </button>
-                <ul class="dropdown-menu" id="modelDropdown">
-                    <li><a class="dropdown-item fw-bold text-secondary" href="#"
-                            data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li>
-                    <li><a class="dropdown-item fw-bold text-secondary" href="#"
-                            data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro </a></li>
-                </ul>
+        <div class="container d-flex justify-content-center align-items-center p-5 size-bar">
+            <!-- Adicionado flex-column para o layout de telemóvel e flex-md-row para ecrãs maiores -->
+            <div class="d-flex flex-column flex-md-row w-100">
+                <!-- O span e o textarea são agora irmãos diretos da div flexbox -->
+                <span class="bg-textarea input-group-text rounded mb-2 mb-md-0 border-0">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle btn-ia text-white fw-bold border-0" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
+                            Modelo IA
+                        </button>
+                        <ul class="dropdown-menu" id="modelDropdown">
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                                    data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li>
+                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                                    data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro </a></li>
+                        </ul>
+                    </div>
+                </span>
+                <textarea class="form-control bg-textarea rounded-end border-0" aria-label="With textarea" id="promptTextarea" placeholder="Digite sua pergunta..."></textarea>
             </div>
-        </span>
-        <textarea class="form-control bg-textarea rounded-end" aria-label="With textarea"
-            id="promptTextarea" placeholder="Digite sua pergunta..."></textarea>
-    </div>
-</div>
+        </div>
         </div>
         <div class="container-fluid d-flex justify-content-center align-items-center pb-5">
             <button type="button" class="btn fw-bold botao" id="submitButton">Perguntar <i
                     class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
+        <small class="d-flex justify-content-center align-items-center text-white pt-5">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> 
+                - O Gemini pode cometer erros, é recomendado checar as respostas.</p>
+        </small>
+
     </main>
 
-    <footer class="container-fluid d-flex justify-content-center footer p-2">
-        <p class="fw-bold"> Desenvolvido pelo grupo 3.9 - Programa Desenvolve - O Boticário </p>
+    <footer class="container-fluid d-flex flex-column justify-content-center footer p-2 text-center">
+        <p class="fw-bold"> Desenvolvido por Johon Gomes - Programa Desenvolve - O Boticário </p>
+        <ul class="d-flex justify-content-center gap-4 list-unstyled">
+            <li><a href="https://www.linkedin.com/in/johongomes"><i class="fa-brands fa-linkedin-in fs-4"></i></a></li>
+            <li><a href="https://github.com/JohonGomes"><i class="fa-brands fa-github fs-4"></i></a></li>
+            <li><a href="mailto: johon.dev@icloud.com"><i class="fa-solid fa-at fs-4"></i></a></li>
+        </ul>
     </footer>
 
 

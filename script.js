@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
         } else if (tipo === "error") {
-            mensagemDiv.classList.add("ia-bubble", "text-danger");
+            mensagemDiv.classList.add("ia-bubble", "text-white");
             mensagemDiv.innerHTML = `<p>${conteudo}</p>`;
         }
 
