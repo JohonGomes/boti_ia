@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentModel = null;
 
+    // Inicializar o conteúdo da área de resposta, caso seja nulo ou vazio
+    if (!responseArea.innerHTML.trim()) {
+        responseArea.innerHTML = `<div class="p-3"><p class="fw-bold text-warning fs-4 text-justify">Bem-vindos ao Boti IA!</p></div>`;
+    }
+
+
     modelDropdown.addEventListener("click", function (event) {
         const selectedModel = event.target.getAttribute("data-model");
         if (selectedModel) {
@@ -16,65 +22,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Adicionado: Evento para enviar a mensagem ao pressionar "Enter"
+    promptTextarea.addEventListener("keydown", function (event) {
+        // Verifica se a tecla pressionada é "Enter" e se a tecla "Shift" não está pressionada
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault(); // Impede a quebra de linha padrão
+            submitButton.click(); // Dispara o evento de clique do botão de enviar
+        }
+    });
+
     submitButton.addEventListener("click", async () => {
         const apiKey = apiKeyInput.value;
         const prompt = promptTextarea.value;
 
-        if (!apiKey) {
-            responseArea.innerHTML =
-                `
-                <div class="d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
-                    <span>Por favor, insira sua chave da API.</span>
-                </div>
-            `;
+        // 1. Validar se os campos estão preenchidos
+        if (!apiKey || !currentModel || !prompt) {
+            let errorMessage = "";
+            if (!apiKey) errorMessage = "Por favor, insira sua chave da API.";
+            else if (!currentModel) errorMessage = "Por favor, escolha o modelo de IA.";
+            else if (!prompt) errorMessage = "Por favor, digite sua pergunta.";
+
+            // Adicionar uma mensagem de erro temporária ao histórico
+            adicionarMensagem("error", errorMessage);
             return;
         }
 
-        if (!currentModel) {
-            responseArea.innerHTML =
-                `
-            <div class="d-flex align-items-center gap-2">
-                <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
-                <span>Por favor, escolha o modelo de IA.</span>
-            </div>
+        // 2. Adicionar a pergunta do usuário ao histórico de chat
+        adicionarMensagem("user", prompt);
 
-            `;
-            return;
-        }
+        // 3. Adicionar o spinner de carregamento
+        const spinner = adicionarMensagem("ia-loading", "");
 
-        if (!prompt) {
-            responseArea.innerHTML =
-                `
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-triangle-exclamation text-danger fs-4"></i>
-                        <span>Por favor, digite sua pergunta.</span>
-                    </div>
-                `;
-            ;
-            return;
-        }
-
-        responseArea.innerHTML =
-            `
-            <div class="d-flex justify-content-center align-items-center gap-2">
-                <div class="spinner-grow text-success" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                <div class="spinner-grow text-danger" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                <div class="spinner-grow text-warning" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            `;
-
+        // Limpar a caixa de texto
         promptTextarea.value = "";
 
         try {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:generateContent?key=${apiKey}`;
-
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -97,15 +80,51 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             const text = data.candidates[0].content.parts[0].text;
 
-            // Formatação do texto: substitui quebras de linha por parágrafos
-            const formattedText = text.split('\n').map(p => `<p>${p}</p>`).join('');
-
-            // Insere o HTML formatado na área de resposta
-            responseArea.innerHTML = formattedText;
+            // 4. Remover o spinner e adicionar a resposta da IA
+            responseArea.removeChild(spinner);
+            adicionarMensagem("ia", text);
 
         } catch (error) {
             console.error("Erro ao chamar a API do Gemini:", error);
-            responseArea.textContent = `Ocorreu um erro ao processar sua solicitação: ${error.message}. Verifique sua chave da API ou tente novamente mais tarde.`;
+            // 5. Remover o spinner em caso de erro e mostrar a mensagem de erro
+            responseArea.removeChild(spinner);
+            adicionarMensagem("error", `Ocorreu um erro: ${error.message}.`);
         }
     });
+
+    // Função auxiliar para adicionar mensagens ao histórico
+    function adicionarMensagem(tipo, conteudo) {
+        const mensagemDiv = document.createElement("div");
+        mensagemDiv.classList.add("chat-bubble");
+
+        if (tipo === "user") {
+            mensagemDiv.classList.add("user-bubble");
+            // Adicionar a pergunta do utilizador
+            mensagemDiv.innerHTML = `<p>${conteudo}</p>`;
+        } else if (tipo === "ia") {
+            mensagemDiv.classList.add("ia-bubble");
+            // Formatar a resposta da IA para parágrafos
+            const formattedText = conteudo.split('\n').map(p => `<p>${p}</p>`).join('');
+            mensagemDiv.innerHTML = formattedText;
+        } else if (tipo === "ia-loading") {
+            mensagemDiv.classList.add("ia-bubble");
+            mensagemDiv.innerHTML = `
+                <div class="d-flex justify-content-start align-items-center gap-2">
+                    <div class="spinner-grow text-success" role="status"></div>
+                    <div class="spinner-grow text-danger" role="status"></div>
+                    <div class="spinner-grow text-warning" role="status"></div>
+                </div>
+            `;
+        } else if (tipo === "error") {
+            mensagemDiv.classList.add("ia-bubble", "text-danger");
+            mensagemDiv.innerHTML = `<p>${conteudo}</p>`;
+        }
+
+        responseArea.appendChild(mensagemDiv);
+
+        // Garantir que a área de chat "scrolla" para baixo
+        responseArea.scrollTop = responseArea.scrollHeight;
+
+        return mensagemDiv;
+    }
 });

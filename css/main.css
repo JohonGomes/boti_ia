@@ -49,7 +49,7 @@
 }
 
 #responseArea {
-    max-width: 1000px;
+    max-width: 1015px;
 }
 
 #responseArea {
@@ -63,4 +63,172 @@
 #responseArea p {
     width: 100%;
     /* Ajuste a largura do parágrafo para um alinhamento melhor */
+}
+
+/* Estilo para a área do chat para usar Flexbox */
+.area {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+/* Estilo base para todas as bolhas de chat */
+.chat-bubble {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1.5rem;
+    max-width: 80%;
+    word-wrap: break-word;
+    /* Garante que o texto longo quebre a linha */
+}
+
+/* Estilo para a bolha do usuário (alinhada à direita) */
+.user-bubble {
+    background-color: #007bff;
+    /* Azul para as mensagens do usuário */
+    color: white;
+    align-self: flex-end;
+    /* Alinha a bolha à direita */
+    border-bottom-right-radius: 0;
+    /* Remove o canto arredondado inferior direito para parecer um balão */
+}
+
+/* Estilo para a bolha da IA (alinhada à esquerda) */
+.ia-bubble {
+    background-color: #e9ecef;
+    /* Cinzento claro para as mensagens da IA */
+    color: #212529;
+    align-self: flex-start;
+    /* Alinha a bolha à esquerda */
+    border-bottom-left-radius: 0;
+    /* Remove o canto arredondado inferior esquerdo */
+}
+
+/* Estilo para a área do chat para usar Flexbox */
+.area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Estilo base para todas as bolhas de chat */
+.chat-bubble {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    /* Aumentado de 80% para 90% para dar mais largura às bolhas de chat */
+    max-width: 50%;
+    border-radius: 1.5rem;
+    word-wrap: break-word;
+    /* Garante que o texto longo quebre a linha */
+}
+
+/* Estilo para a bolha do usuário (alinhada à direita) */
+.user-bubble {
+    background-color: #007bff;
+    /* Azul para as mensagens do usuário */
+    color: white;
+    align-self: flex-end;
+    /* Alinha a bolha à direita */
+    border-bottom-right-radius: 0;
+    /* Remove o canto arredondado inferior direito para parecer um balão */
+}
+
+/* Estilo para a bolha da IA (alinhada à esquerda) */
+.ia-bubble {
+    background-color: #e9ecef;
+    /* Cinzento claro para as mensagens da IA */
+    color: #212529;
+    align-self: flex-start;
+    /* Alinha a bolha à esquerda */
+    border-bottom-left-radius: 0;
+    /* Remove o canto arredondado inferior esquerdo */
+}
+
+* Estilo para a área do chat para usar Flexbox */ .area {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* Adicionado: cria uma barra de rolagem vertical se o conteúdo for muito grande */
+    overflow-y: auto;
+}
+
+/* Estilo base para todas as bolhas de chat */
+.chat-bubble {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    /* Aumentado de 80% para 90% para dar mais largura às bolhas de chat */
+    max-width: 90%;
+    border-radius: 1.5rem;
+    word-wrap: break-word;
+    /* Garante que o texto longo quebre a linha */
+    /* Adicionado: diminui o tamanho da fonte */
+    font-size: 0.9rem;
+}
+
+/* Estilo para a bolha do usuário (alinhada à direita) */
+.user-bubble {
+    background-color: #007bff;
+    /* Azul para as mensagens do usuário */
+    color: white;
+    align-self: flex-end;
+    /* Alinha a bolha à direita */
+    border-bottom-right-radius: 0;
+    /* Remove o canto arredondado inferior direito para parecer um balão */
+}
+
+/* Estilo para a bolha da IA (alinhada à esquerda) */
+.ia-bubble {
+    background-color: var(--laranja);
+    /* Cinzento claro para as mensagens da IA */
+    color: white;
+    align-self: flex-start;
+    /* Alinha a bolha à esquerda */
+    border-bottom-left-radius: 0;
+    /* Remove o canto arredondado inferior esquerdo */
+}
+
+@media(max-width:491px) {
+    .col-12 {
+        display: flex !important;
+    }
+
+    body {
+        padding: 00px;
+        margin: -15px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .logo {
+        width: 100px !important;
+        padding-top: 50px !important;
+    }
+
+    .fw-bold {
+        text-align: center !important;
+        margin: 10px;
+    }
+
+    .bg-textarea {
+        display: flex;
+        justify-content: center;
+    }
+
+    .formcontrol {
+        margin-top: 15px !important;
+        place-content: Digite aqui a pergunta;
+    }
+
+    .dropdown-menu {
+        background-color: var(--azul) !important;
+        top: 16px !important;
+        left: -67px !important;
+        width: 258px;
+        color: white !important;
+    }
+
+    .dropdown-menu a {
+        color: white !important;
+    }
 }

@@ -18,18 +18,14 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+            <div class="container-fluid mx-4">
                 <a class="navbar-brand" href="#">
                     <img class="img-fluid" src="./assets/gb-logo.png" alt="Bootstrap" width="60" height="30">
                 </a>
                 <a class="navbar-brand fw-bold" href="#">Boti IA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                 </div>
-                <div class="row">
+                <div class="row mx-3">
                     <div class="col-12">
                         <div class="input-group flex-nowrap border-0">
                             <span class="input-group-text border-0 bg-textarea" id="addon-wrapping">API Key:</span>
@@ -44,32 +40,35 @@
 
     <main class="bg">
         <figure class="container-fluid d-flex justify-content-center align-items-center">
-            <img class="img-fluid logo p-5" src="./assets/gb-logo.png" alt="Logo O Boticário">
+            <img class="img-fluid logo" src="./assets/gb-logo.png" alt="Logo O Boticário">
         </figure>
+        
 
-        <div class="container-fluid d-flex justify-content-center align-items-center area">
-            <p class="fw-bold text-warning fs-4 text-justify" id="responseArea">Bem-vindos ao Boti IA!</p> <br>
+        <div class="container-fluid d-flex justify-content-center align-items-center area" id="responseArea">
         </div>
 
-        <div class="container-fluid d-flex justify-content-center align-items-center p-5">
-            <div class="input-group">
-                <span class="input-group-text bg-textarea">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle btn-ia text-white fw-bold" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
-                            Modelo IA
-                        </button>
-                        <ul class="dropdown-menu" id="modelDropdown">
-                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
-                                    data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li> <!-- Funcionando-->
-                            <li><a class="dropdown-item fw-bold text-secondary" href="#"
-                                    data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro </a></li>
-                        </ul>
-                    </div>
-                </span>
-                <textarea class="form-control bg-textarea" aria-label="With textarea"
-                    id="promptTextarea"></textarea>
+        <div class="container d-flex justify-content-center align-items-center p-5">
+    <!-- Adicionado flex-column para o layout de telemóvel e flex-md-row para ecrãs maiores -->
+    <div class="d-flex flex-column flex-md-row w-100">
+        <!-- O span e o textarea são agora irmãos diretos da div flexbox -->
+        <span class="bg-textarea input-group-text rounded mb-2 mb-md-0">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle btn-ia text-white fw-bold" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" id="modelDropdownButton">
+                    Modelo IA
+                </button>
+                <ul class="dropdown-menu" id="modelDropdown">
+                    <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                            data-model="gemini-1.5-flash-latest">Gemini 1.5 Flash</a></li>
+                    <li><a class="dropdown-item fw-bold text-secondary" href="#"
+                            data-model="gemini-1.5-pro-latest">Gemini 1.5 Pro </a></li>
+                </ul>
             </div>
+        </span>
+        <textarea class="form-control bg-textarea rounded-end" aria-label="With textarea"
+            id="promptTextarea" placeholder="Digite sua pergunta..."></textarea>
+    </div>
+</div>
         </div>
         <div class="container-fluid d-flex justify-content-center align-items-center pb-5">
             <button type="button" class="btn fw-bold botao" id="submitButton">Perguntar <i
@@ -79,7 +78,7 @@
     </main>
 
     <footer class="container-fluid d-flex justify-content-center footer p-2">
-        <p class="fw-bold "> Desenvolvido pelo grupo 3.9 - Programa Desenvolve - O Boticário </p>
+        <p class="fw-bold"> Desenvolvido pelo grupo 3.9 - Programa Desenvolve - O Boticário </p>
     </footer>
 
 
